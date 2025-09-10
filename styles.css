@@ -1,0 +1,291 @@
+/* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #fff;
+  color: #222;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  background: #fff;
+  box-shadow: 0 0 3px #ccc;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo img {
+  height: 32px;
+  width: auto;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #5ebd27; /* green */
+  font-family: inherit;
+  /* Changed brand name from Edispo to Orbit in HTML, no CSS change needed */
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  box-shadow: 0 4px 8px rgba(94, 189, 39, 0.4);
+  background: #e6f4d4;
+  color: #5ebd27;
+  outline: none;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  border: none;
+  background-color: #5ebd27;
+  color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 6px 12px rgba(94, 189, 39, 0.7);
+  outline: none;
+}
+
+/* Main Content */
+main {
+  max-width: 1200px;
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
+}
+
+.hero-section {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1 1 320px;
+  max-width: 480px;
+}
+
+.hero-text h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.start-journey-btn {
+  border: none;
+  background: transparent;
+  color: #a9c282;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+}
+
+.start-journey-btn:hover {
+  background: #dbefb3;
+  box-shadow: 0 4px 8px rgba(169, 194, 130, 0.5);
+  outline: none;
+}
+
+.service-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex: 1 1 480px;
+  justify-content: space-between;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  width: 140px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px #ddd;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(94, 189, 39, 0.4);
+}
+
+.card img {
+  width: 70px;
+  height: auto;
+  margin-bottom: 0.6rem;
+}
+
+.card p {
+  font-size: 0.8rem;
+  color: #444;
+  line-height: 1.2;
+}
+
+/* Donate Banner */
+.donate-banner {
+  margin-top: 3rem;
+  background: linear-gradient(90deg, #066d30 0%, #3d9540 100%);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 8px;
+  position: relative;
+  /* add background images later */
+}
+
+.donate-banner h2 {
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.donate-banner h1 {
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.social-icons {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.social-icons a img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.social-icons a:hover img {
+  filter: brightness(0.7) invert(1);
+}
+
+.handle {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-left: 0.5rem;
+}
+
+.carousel-dots {
+  margin-top: 1rem;
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  margin: 0 4px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.dot.active,
+.dot:hover {
+  background-color: #dbefb3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .hero-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .service-cards {
+    justify-content: flex-start;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+}
