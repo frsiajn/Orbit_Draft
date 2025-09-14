@@ -1,71 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Orbit</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="script.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orbit</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css" />
+    <icon rel="icon" type="image/png" href="images/logo.png" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <img src="logo.png" alt="Orbit Logo" />
-        <span class="brand">Orbit</span>
-      </div>
-      <ul class="nav-links">
-        <li><button class="tab-btn active" data-tab="about">About</button></li>
-        <li><button class="tab-btn" data-tab="waste-bins">Waste Bins</button></li>
-      </ul>
-      <div class="actions">
-        <button class="btn donate-btn">Donate</button>
-      </div>
-    </nav>
-  </header>
+    <header class="navbar">
+        <div class="container">
+            <nav class="navbar-content">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Orbit Logo" />
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="tab-btn nav-link active">Home</a></li>
+                    <li><a href="#process" class="tab-btn nav-link">Our Process</a></li>
+                    <li><a href="#accepted-items" class="tab-btn nav-link">What We Accept</a></li>
+                    <li><a href="#drop-off-locations" class="tab-btn nav-link">Locations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <main>
-    <section class="hero-section" id="content">
-      <div class="hero-text">
-        <h1>Waste shouldn’t be your business, it’s ours.</h1>
-        <p>Stop wasting your time and let Orbit help you with your waste management needs.</p>
-        <button class="start-journey-btn">Start your Orbit journey &rarr;</button>
-      </div>
-      <div class="service-cards">
-        <div class="card">
-          <img src="hazardous-waste.png" alt="Hazardous Waste Management" />
-          <p>Hazardous Waste Management</p>
-        </div>
-        <div class="card">
-          <img src="it-asset.png" alt="IT Asset, General Scrap & Recyclables Disposal" />
-          <p>IT Asset, General Scrap & Recyclables Disposal</p>
-        </div>
-        <div class="card">
-          <img src="waste-bins.png" alt="Waste Bins" />
-          <p>Waste Bins</p>
-        </div>
-        <div class="card">
-          <img src="hard-drive.png" alt="Hard Drive Degaussing" />
-          <p>Hard Drive Degaussing</p>
-        </div>
-      </div>
-    </section>
+    <main>
+        <section class="hero-slideshow-section" id="home">
+            <div class="slideshow-container">
+                <div class="slides-wrapper">
+                    <div class="slide" style="background-image: url(images/banner1.png);"></div>
+                    <div class="slide" style="background-image: url(images/banner2.png);"></div>
+                    <div class="slide" style="background-image: url(images/banner3.png);;"></div>
+                    <div class="slide" style="background-image: url(images/banner4.png);;"></div>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="container">
+                    <h1>Waste shouldn’t be your business, it’s ours.</h1>
+                    <p>Orbit makes it easy to responsibly recycle your electronic waste. Find a drop-off location near you and help us build a greener future.</p>
+                    <a href="#drop-off-locations" class="btn btn-primary">Find a Drop-off Location</a>
+                </div>
+            </div>
+        </section>
+        <section class="how-it-works" id="process">
+            <div class="container">
+                <h2 class="section-title">Our Simple 3-Step Process</h2>
+                <div class="process-container">
+                    <div class="process-step">
+                        <div class="icon-circle"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h3>1. Find a Location</h3>
+                        <p>Use our interactive map to find the most convenient e-waste drop-off point near you.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="icon-circle"><i class="fa-solid fa-box-archive"></i></div>
+                        <h3>2. Drop Off Your Items</h3>
+                        <p>Bring your unwanted electronics—from old phones to broken printers—to the designated bin.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="icon-circle"><i class="fa-solid fa-recycle"></i></div>
+                        <h3>3. We Recycle Responsibly</h3>
+                        <p>We partner with certified recyclers to ensure your e-waste is handled safely and sustainably.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="accepted-items" id="accepted-items">
+            <div class="container">
+                <h2 class="section-title">What We Accept</h2>
+                <div class="items-grid">
+                    <div class="item-card"><i class="fa-solid fa-laptop"></i><span>Laptops</span></div>
+                    <div class="item-card"><i class="fa-solid fa-mobile-screen-button"></i><span>Mobile Phones</span></div>
+                    <div class="item-card"><i class="fa-solid fa-tablet-screen-button"></i><span>Tablets</span></div>
+                    <div class="item-card"><i class="fa-solid fa-computer"></i><span>Desktop PCs</span></div>
+                    <div class="item-card"><i class="fa-solid fa-keyboard"></i><span>Keyboards & Mice</span></div>
+                    <div class="item-card"><i class="fa-solid fa-print"></i><span>Printers</span></div>
+                    <div class="item-card"><i class="fa-solid fa-plug"></i><span>Cables & Chargers</span></div>
+                    <div class="item-card"><i class="fa-solid fa-car-battery"></i><span>Batteries</span></div>
+                </div>
+            </div>
+        </section>
 
-    <section class="donate-banner">
-      <h2><em>Be responsible in disposing your e-waste</em></h2>
-      <h1>Check out our <strong>DONATE</strong> page</h1>
-      <div class="social-icons">
-        <a href="Facebook" aria-label="Facebook"><img src="facebook-icon.svg" alt="Facebook"/></a>
-        <a href="#" aria-label="Medium"><img src="medium-icon.svg" alt="Medium"/></a>
-        <span class="handle">orbitph</span>
-      </div>
-      <div class="carousel-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </section>
-  </main>
+        <section class="drop-off-locations" id="drop-off-locations">
+             <div class="container">
+                <h2 class="section-title">E-Waste Drop-off Locations</h2>
+                <div class="map-container">
+                    <div id="map"></div>
+                    <div class="location-list-map" id="location-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="brand">Orbit</span>
+                    <p>E-Waste Recycling</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:contact@orbitrecycling.com">contact@orbitrecycling.com</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Orbit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
