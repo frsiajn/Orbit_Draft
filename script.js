@@ -1,48 +1,60 @@
-const tabs = document.querySelectorAll('.tab');
-const content = document.getElementById('content');
+document.addEventListener('DOMContentLoaded', function () {
+    try {
+        if (document.getElementById('map')) {
+            const map = L.map('map').setView([7.08, 125.6], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
 
-const contentMap = {
-  'about': `
-    <div class="hero-text">
-      <h1>Waste shouldn’t be your business, it’s ours.</h1>
-      <p>Stop wasting your time and let Orbit help you with your waste management needs.</p>
-      <button class="start-journey-btn">Start your Orbit journey &rarr;</button>
-    </div>
-    <div class="service-cards">
-      <div class="card">
-        <img src="hazardous-waste.png" alt="Hazardous Waste Management" />
-        <p>Hazardous Waste Management</p>
-      </div>
-      <div class="card">
-        <img src="it-asset.png" alt="IT Asset, General Scrap & Recyclables Disposal" />
-        <p>IT Asset, General Scrap & Recyclables Disposal</p>
-      </div>
-      <div class="card">
-        <img src="waste-bins.png" alt="Waste Bins" />
-        <p>Waste Bins</p>
-      </div>
-      <div class="card">
-        <img src="hard-drive.png" alt="Hard Drive Degaussing" />
-        <p>Hard Drive Degaussing</p>
-      </div>
-    </div>
-  `,
-  'waste-bins': `
-    <h1>Waste Bins</h1>
-    <p>Information and details related to Waste Bins services.</p>
-    <!-- Add more content/images as needed -->
-  `
-};
+            const locations = [
+                { name: 'SM Ecoland 2F Cyberzone', coords: [7.0515, 125.5895], mapLink: 'https://maps.app.goo.gl/Ppq6eJcHLnECnceL8' },
+                { name: 'SM Lanang 3F Cyberzone', coords: [7.1005, 125.6310], mapLink: 'https://maps.app.goo.gl/PMKd3vbBBTDAwh1C6' },
+                { name: 'Abreeza 2F Globe store', coords: [7.0872, 125.6105], mapLink: 'https://maps.app.goo.gl/GQz2QQ4aFZnVY7UNA' }
+            ];
 
-// Add click event listeners to tabs
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    // Remove active class from all tabs
-    tabs.forEach(t => t.classList.remove('active'));
-    // Add active to clicked tab
-    tab.classList.add('active');
-    // Replace content
-    const selected = tab.getAttribute('data-tab');
-    content.innerHTML = contentMap[selected] || '<p>Content not available.</p>';
-  });
+            const locationListElement = document.getElementById('location-list');
+            locations.forEach(location => {
+                const marker = L.marker(location.coords).addTo(map).bindPopup(`<b>${location.name}</b>`);
+                const locationItem = document.createElement('div');
+                locationItem.className = 'location-item';
+                locationItem.innerHTML = `<h3>${location.name}</h3><p><a href="${location.mapLink}" target="_blank"><i class="fa-solid fa-map-pin"></i> View on Google Maps</a></p>`;
+                
+                locationItem.addEventListener('click', (e) => {
+                    if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+                         map.flyTo(location.coords, 15);
+                        marker.openPopup();
+                        document.querySelectorAll('.location-item').forEach(item => item.classList.remove('active'));
+                        locationItem.classList.add('active');
+                    }
+                });
+                
+                locationListElement.appendChild(locationItem);
+            });
+        }
+    } catch (e) {
+        console.error("An error occurred during map initialization:", e);
+    }
+
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a.nav-link');
+    if (sections.length > 0 && navLinks.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: "-30% 0px -70% 0px" });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
 });
